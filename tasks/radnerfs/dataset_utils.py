@@ -216,6 +216,6 @@ class RADNeRFDataset(torch.utils.data.Dataset):
  
 if __name__ == '__main__':
     set_hparams()
-    ds = RADNeRFDataset('trainval', data_dir='data/binary/videos/May')
+    ds = RADNeRFDataset('trainval', data_dir='data/binary/videos/KRTrim')
     ds[0]
     print("done!")

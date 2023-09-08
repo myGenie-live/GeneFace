@@ -1,6 +1,7 @@
 import torch
 import numpy as np
-
+import sys
+print(sys.path)
 from utils.commons.hparams import hparams
 
 from tasks.radnerfs.dataset_utils import RADNeRFDataset
@@ -92,8 +93,8 @@ if __name__ == '__main__':
     from utils.commons.hparams import hparams as hp
     inp = {
             'audio_source_name': 'data/raw/val_wavs/zozo.wav',
-            'cond_name': 'infer_out/May/pred_lm3d/zozo.npy',
-            'out_video_name': 'infer_out/May/pred_video/zozo.mp4',
+            'cond_name': 'infer_out/KRTrim/pred_lm3d/zozo.npy',
+            'out_video_name': 'infer_out/KRTrim/pred_video/zozo.mp4',
             }
 
     LM3d_RADNeRFInfer.example_run(inp)

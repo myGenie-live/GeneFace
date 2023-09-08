@@ -14,8 +14,12 @@ from .util.load_mats import load_lm3d
 import torch 
 import pickle as pkl
 from PIL import Image
+import sys
+print(os.path.abspath(__file__))
+#sys.path.append("/Projects/GeneFace")
+#sys.path.append( "/Projects/GeneFace/utils")
 
-from utils.commons.tensor_utils import convert_to_tensor, convert_to_np
+from .utils.commons.tensor_utils import convert_to_tensor, convert_to_np
 
 with open("deep_3drecon/reconstructor_opt.pkl", "rb") as f:
     opt = pkl.load(f) 

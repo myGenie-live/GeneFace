@@ -146,8 +146,8 @@ if __name__ == '__main__':
     from utils.commons.hparams import hparams as hp
     inp = {
             'audio_source_name': 'data/raw/val_wavs/zozo.wav',
-            'cond_name': 'infer_out/May/pred_lm3d/zozo.npy',
-            'out_video_name': 'infer_out/May/pred_video/zozo.mp4',
+            'cond_name': 'infer_out/KRTrim/pred_lm3d/zozo.npy',
+            'out_video_name': 'infer_out/KRTrim/pred_video/zozo.mp4',
             }
 
     LM3dNeRFInfer.example_run(inp)

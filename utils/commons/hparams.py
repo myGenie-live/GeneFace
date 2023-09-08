@@ -43,6 +43,8 @@ def set_hparams(config='', exp_name='', hparams_str='', print_hparams=True, glob
     global hparams
     assert args.config != '' or args.exp_name != ''
     if args.config != '':
+        print("Printing args.config")
+        print(args.config)
         assert os.path.exists(args.config)
 
     config_chains = []

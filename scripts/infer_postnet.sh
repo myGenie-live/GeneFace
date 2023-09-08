@@ -1,5 +1,5 @@
 export CUDA_VISIBLE_DEVICES=0
-export Video_ID=May
+export Video_ID=KRTrim
 export Wav_ID=zozo
 export Postnet_Ckpt_Steps=4000 # please reach to `docs/train_models.md` to get some tips about how to select an approprate ckpt_steps!
 

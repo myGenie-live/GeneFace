@@ -4,19 +4,18 @@ import librosa
 import numpy as np
 import importlib
 import tqdm
-
-from utils.commons.tensor_utils import move_to_cuda
+import sys
+print(sys.path)
+import utils
 from utils.commons.ckpt_utils import load_ckpt, get_last_checkpoint
 from utils.commons.hparams import hparams, set_hparams
-
+WAV_ID="KRTrim"
 
 class PostnetInfer:
     def __init__(self, hparams, device=None):
-        if device is None:
-            device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.hparams = hparams
         self.infer_max_length = hparams.get('infer_max_length', 500000)
-        self.device = device
+        self.device = 'cpu'
         self.postnet_task = self.build_postnet_task()
         self.postnet_task.eval()
         self.postnet_task.to(self.device)
@@ -89,8 +88,6 @@ class PostnetInfer:
             pred_lst = []            
             for idx, batch in tqdm.tqdm(enumerate(batches), total=len(batches),
                                 desc=f"Now VAE is predicting the action into {inp['out_npy_name']}"):
-                if self.device == 'cuda':
-                    batch = move_to_cuda(batch)
                 model_out = self.postnet_task.run_model(batch, infer=True, temperature=1.)
                 pred = model_out['refine_lm3d'].squeeze().cpu().numpy()
                 pred_lst.append(pred)
@@ -133,6 +130,6 @@ if __name__ == '__main__':
     set_hparams()
     inp = {
             'audio_source_name': 'data/raw/val_wavs/zozo.wav',
-            'out_npy_name': 'infer_out/May/pred_lm3d/zozo.npy',
+            'out_npy_name': 'infer_out/' + WAV_ID + '/pred_lm3d/zozo.npy',
             }
     PostnetInfer.example_run(inp)
